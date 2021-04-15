@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asocena</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+	<script>
+		var test = document.createElement("div")
+		test.className = "hidden d-none"
+
+		document.head.appendChild(test)
+		var cssLoaded = window.getComputedStyle(test).display === "none"
+		document.head.removeChild(test)
+
+		if (!cssLoaded) {
+			var link = document.createElement("link");
+
+			link.type = "text/css";
+			link.rel = "stylesheet";
+			link.href = "css/deps/bootstrap.min.css";
+
+			document.head.appendChild(link);
+		}
+	</script>
+	<link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="css/deps/normalize-5.0.0.css">
+	<link rel="stylesheet" type="text/css" href="css/deps/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/crossword.css">
+	<link rel="stylesheet" type="text/css" href="css/font.css">
+  <script type="text/javascript">
+  	if(!(sessionStorage.getItem("name"))){
+  		window.location.replace("index.html");
+  	}
+
+  </script>
+</head>
+
+<body >
+    <div class="prev-btn">
+      <button type="button" class="btn-prev" id="prev" data-toggle="modal" data-target="#modal1"   style="outline: none; ">
+        <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+      </button>
+    </div>
+
+    <div class="container-fluid boxes">
+      <div class="rows">
+        <div class="cols c-1">
+			<div class="crossword"></div>
+        </div>
+        <div class="cols c-2 text-center">
+		<header>
+                <div class="header">
+                  <h1>Asocena</h1>
+                </div>
+				</header>
+          <hr>
+			<div class="crossword-clues">
+				
+			</div>
+          <hr>
+          <div class="clues-btn">
+            <button type="button" class="btn btn-primary" id="prev" data-toggle="modal" data-target="#modal3"   style="outline: none; ">
+              View Details
+            </button>
+          </div>
+          <div class="buttons">
+            <button type="button" id="checkcw" class="btn btn-secondary" >Check</button>
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal2">Submit</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="loader">
+        <div class="loader-message">Loading...</div>
+    </div>
+
+  <div class="modal fade " id="modal1"  data-keyboard="false" data-backdrop="static" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content ">
+          <div class="modal-body col">
+            <p class="modal-p">Are you sure you want to Exit?</p>
+            <img src="assets/images/tenor.gif" alt="">
+          </div>
+          <div class="modal-footer d-flex justify-content-center">
+            <a class="button-a" href="index.html"><button type="button" class="btn btn-secondary btn-success a-button">Yes</button></a>
+            <button type="button" class="btn btn-primary btn-danger" data-dismiss="modal">No</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade " id="modal2"  data-keyboard="false" data-backdrop="static" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content ">
+          <div class="modal-body col">
+            <p class="modal-p" id="submitted-p">Are you sure you want to Submit?</p>
+            <img id="submitted-img1" class="submitted-img" src="assets/images/looking.gif" alt="">
+			<img id="submitted-img2" class="submitted-img" src="assets/images/waiting.gif" alt="">
+			<img id="submitted-img3" class="submitted-img" src="assets/images/goodjob.gif" alt="">
+          </div>
+          <div class="modal-footer d-flex justify-content-center" id="submitted-footer">
+            <button type="button" id="submitcw" class="btn btn-secondary btn-success">Yes</button>
+            <button type="button" class="btn btn-primary btn-danger" data-dismiss="modal">No</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+	<div class="modal fade " id="modal3"  data-keyboard="false" data-backdrop="static" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+		  <div class="modal-content ">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true" style="outline: none; font-size: 40px;">&times;</span>
+			  </button>
+			</div>
+			<div class="modal-body col">
+				<div class="cols">
+				  <img src="assets/images/3.jpg" alt="">
+				</div>
+				<div class="txt text-center">
+				  <p>Asocena is a chavacano short story by  Antonio Enriquez which tells 
+				  the story of Chu, a child who lost his dog named Leal. The story focuses 
+				  on how his father Ingo tries to help his son Chu recover from the loss of his dog.</p>
+				</div>
+			</div>
+			<div class="modal-footer">
+			</div>
+		</div>
+	  </div>
+	</div>
+
+	<form id="google-form" method="POST" action="https://docs.google.com/forms/d/1-J5AZNHibCaR2gKQDXNo88P3J2-5yteRMzd6jmJO8S0" onsubmit="return window.submitGoogleForm(this);">
+		<input class="form-input" name="entry.540340220">
+		<input class="form-input" name="entry.1637988633">
+		<input class="form-input" name="entry.2013082990">
+		<input class="form-input" name="entry.334943336">
+		<input class="form-input" name="entry.63395251">
+		<input class="form-input" name="entry.1294356816">
+		<input class="form-input" name="entry.709867462">
+		<input class="form-input" name="entry.1530343961">
+		<input class="form-input" name="entry.1148828021">
+		<input class="form-input" name="entry.1848674577">
+		<input class="form-input" name="entry.744664465">
+		<input class="form-input" name="entry.1217706807">
+		<input class="form-input" name="entry.1130822419">
+		<input type="submit">
+	</form>
+
+	<script>
+		var title = "asocena";
+	</script>
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+	<script>window.jQuery || document.write('<script src="js/deps/jquery-3.5.1.min.js"><\/script>')</script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js" integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd" crossorigin="anonymous"></script>
+	<script>if(typeof($.fn.modal) === 'undefined') {document.write('<script src="js/deps/bootstrap.bundle.min.js"><\/script>')}</script>
+	<script src="js/deps/google-form.js"></script>
+    <script src="js/crossword.js"></script>
+    <script src="js/crosswordInit.js"></script>
+	<script src="js/crossword.a.js"></script>
+	<script src="js/crossword.ca.js"></script>
+</body>
+
+
+</html>
